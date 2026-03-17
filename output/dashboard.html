@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>JustJoin.IT Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0F172A; color: #E2E8F0; padding: 24px; }
+        h1 { color: #0EA5E9; text-align: center; margin-bottom: 24px; font-size: 1.6rem; letter-spacing: -0.3px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #1E293B; border: 1px solid #334155; border-radius: 12px; padding: 20px; }
+        .card h2 { font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; }
+        .chart-wrap { position: relative; height: 260px; }
+        .chart-wrap.small { height: 200px; width: 200px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <div class="grid">
+        <div class="card">
+            <h2>Top cities</h2>
+            <div class="chart-wrap"><canvas id="citiesChart"></canvas></div>
+        </div>
+        <div class="card">
+            <h2>Category</h2>
+            <div class="chart-wrap"><canvas id="categoriesChart"></canvas></div>
+        </div>
+        <div class="card">
+            <h2>Average earnings</h2>
+            <div class="chart-wrap"><canvas id="salaryChart"></canvas></div>
+        </div>
+        <div class="card">
+            <h2>Experience</h2>
+            <div class="chart-wrap small"><canvas id="experienceChart"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+        const gridColor = 'rgba(255,255,255,0.06)';
+        const tickColor = '#94A3B8';
+
+        const citiesLabels = ["Warszawa", "Krak\u00f3w", "Wroc\u0142aw", "Gda\u0144sk", "Katowice", "Pozna\u0144", "Poland (Remote)", "\u0141\u00f3d\u017a", "Bia\u0142ystok", "Gliwice"];
+        const citiesValues = [4928, 1336, 660, 441, 315, 266, 206, 179, 96, 94];
+        const categoriesLabels = ["data", "java", "testing", "analytics", "devops", "other", "pm", "javascript", "python", "ai"];
+        const categoriesValues = [913, 874, 610, 595, 577, 554, 553, 524, 466, 444];
+        const salaryLabels = ["architecture", "ruby", "scala", "ai", "go", "devops", "data", "python", "java", "c"];
+        const salaryValues = [25133, 24184, 24129, 24033, 23435, 22729, 22556, 22327, 21914, 21903];
+        const experienceLabels = ["senior", "mid", "junior", "c_level"];
+        const experienceValues = [4740, 3353, 467, 251];
+
+        new Chart(document.getElementById('citiesChart'), {
+            type: 'bar',
+            data: { labels: citiesLabels, datasets: [{ label: 'Oferty', data: citiesValues, backgroundColor: '#0EA5E9', borderRadius: 4 }] },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: tickColor }, grid: { color: gridColor } },
+                    y: { ticks: { color: tickColor }, grid: { color: gridColor } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('categoriesChart'), {
+            type: 'bar',
+            data: { labels: categoriesLabels, datasets: [{ label: 'Oferty', data: categoriesValues, backgroundColor: '#22C55E', borderRadius: 4 }] },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: tickColor }, grid: { color: gridColor } },
+                    y: { ticks: { color: tickColor }, grid: { color: gridColor } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('salaryChart'), {
+            type: 'bar',
+            data: { labels: salaryLabels, datasets: [{ label: 'Średnia PLN', data: salaryValues, backgroundColor: '#0EA5E9', borderRadius: 4 }] },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: tickColor }, grid: { color: gridColor } },
+                    y: { ticks: { color: tickColor }, grid: { color: gridColor } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('experienceChart'), {
+            type: 'doughnut',
+            data: { labels: experienceLabels, datasets: [{ data: experienceValues, backgroundColor: ['#1B2A4A','#0EA5E9','#22C55E','#F59E0B'], borderColor: '#1E293B', borderWidth: 2 }] },
+            options: {
+                cutout: '60%',
+                plugins: { legend: { position: 'bottom', labels: { color: tickColor, font: { size: 11 } } } }
+            }
+        });
+    </script>
+</body>
+</html>
