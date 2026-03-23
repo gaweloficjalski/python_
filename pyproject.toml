@@ -1,0 +1,22 @@
+[project]
+name = "jjit-scraper"
+version = "0.1.0"
+dependencies = [
+    "requests",
+    "pandas",
+    "openpyxl",
+    "rich",
+]
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[project.scripts]
+jjit = "main:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
