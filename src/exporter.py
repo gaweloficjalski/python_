@@ -38,7 +38,7 @@ def export_to_excel(df, results, filepath):
     write_section(ws3, "Top skills", results['top_skills'], "Number")
     
     # Raw Data
-    columns = ['title', 'workplaceType', 'workingTime', 'experienceLevel','city','companyName', 'category_name','salary_from','salary_to', 'salary_avg', ]
+    columns = ['title', 'workplaceType', 'workingTime', 'experienceLevel','city','companyName', 'category_name','salary_from','salary_to', 'salary_avg', 'skills' ]
     df_clean = df[columns]
     ws4 = wb.create_sheet("Raw Data")
     for row in dataframe_to_rows(df_clean, index=False, header=True):

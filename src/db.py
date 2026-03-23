@@ -19,7 +19,15 @@ def save_to_sqlite(df, filepath):
             salary_avg TEXT
         )
     ''')
-    
+        
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS skills (
+        guid TEXT,
+        skill_name TEXT
+    )
+''')
+    cursor.execute('DELETE FROM offers')
+    cursor.execute('DELETE FROM skills')
     for _, row in df.iterrows():
         cursor.execute('''
             INSERT OR IGNORE INTO offers 
@@ -38,6 +46,13 @@ def save_to_sqlite(df, filepath):
             row.get('salary_to'),
             row.get('salary_avg'),
     ))
+    for _, row in df.iterrows():
+        if row.get('skills'):
+            for skill in row['skills'].split(', '):
+                cursor.execute('''
+                    INSERT INTO skills (guid, skill_name)
+                    VALUES (?, ?)
+                ''', (row.get('guid'), skill))
     conn.commit()
     conn.close()
     print(f"Saved {len(df)} offers to {filepath}")

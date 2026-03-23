@@ -37,7 +37,7 @@ def extract_skills(df):
         for name in skill:
             if 'name' in name:
                 skills.append(name['name'])
-    result = pd.Series(skills).value_counts().head(10)
+    result = pd.Series(skills).value_counts().head(20)
     return result
 
 

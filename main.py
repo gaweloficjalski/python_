@@ -36,6 +36,7 @@ def main():
         df[['salary_from', 'salary_to']] = df['employmentTypes'].apply(extract_salary).tolist()
         df['category_name'] = df['category'].apply(extract_category).tolist()
         df['salary_avg'] = ((df['salary_from'] + df['salary_to'])) / 2
+        df['skills'] = df['requiredSkills'].apply(lambda x: ', '.join(i['name'] for i in x))
         df = clean_cities(df)
         analiza = analyze(df)
         export_to_excel(df, analiza, 'output/report.xlsx')
