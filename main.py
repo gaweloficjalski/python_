@@ -18,6 +18,7 @@ def main():
     # report command
     report_parser = subparsers.add_parser('report', help='Generate report')
     report_parser.add_argument('input', nargs='?' ,default='data/offers.json', help='Input file path')
+    report_parser.add_argument('--format', choices=['json', 'sqlite'], default='json', help='Output format')
 
     args = parser.parse_args()
 
@@ -39,6 +40,9 @@ def main():
         analiza = analyze(df)
         export_to_excel(df, analiza, 'output/report.xlsx')
         export_to_html(analiza, 'output/dashboard.html')
+        if args.format == 'sqlite':
+            from src.db import save_to_sqlite
+            save_to_sqlite(df, 'output/offers.db')
         print("Reports saved to output/")
 
 
