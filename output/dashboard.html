@@ -39,14 +39,14 @@
         const gridColor = 'rgba(255,255,255,0.06)';
         const tickColor = '#94A3B8';
 
-        const citiesLabels = ["Warszawa", "Krak\u00f3w", "Wroc\u0142aw", "Gda\u0144sk", "Katowice", "Pozna\u0144", "Poland (Remote)", "\u0141\u00f3d\u017a", "Bia\u0142ystok", "Gliwice"];
-        const citiesValues = [4928, 1336, 660, 441, 315, 266, 206, 179, 96, 94];
-        const categoriesLabels = ["data", "java", "testing", "analytics", "devops", "other", "pm", "javascript", "python", "ai"];
-        const categoriesValues = [913, 874, 610, 595, 577, 554, 553, 524, 466, 444];
-        const salaryLabels = ["architecture", "ruby", "scala", "ai", "go", "devops", "data", "python", "java", "c"];
-        const salaryValues = [25133, 24184, 24129, 24033, 23435, 22729, 22556, 22327, 21914, 21903];
+        const citiesLabels = ["Warszawa", "Krak\u00f3w", "Wroc\u0142aw", "Gda\u0144sk", "Katowice", "Pozna\u0144", "Poland (Remote)", "\u0141\u00f3d\u017a", "Gdynia", "Gliwice"];
+        const citiesValues = [5041, 1384, 661, 458, 314, 263, 203, 181, 99, 92];
+        const categoriesLabels = ["data", "java", "testing", "devops", "analytics", "other", "pm", "javascript", "python", "ai"];
+        const categoriesValues = [935, 855, 618, 618, 598, 580, 571, 516, 469, 455];
+        const salaryLabels = ["architecture", "ruby", "ai", "scala", "go", "devops", "data", "javascript", "java", "python"];
+        const salaryValues = [25391, 25350, 24997, 24611, 23959, 23150, 22307, 22108, 22074, 22052];
         const experienceLabels = ["senior", "mid", "junior", "c_level"];
-        const experienceValues = [4740, 3353, 467, 251];
+        const experienceValues = [4823, 3444, 473, 246];
 
         new Chart(document.getElementById('citiesChart'), {
             type: 'bar',
@@ -86,7 +86,7 @@
 
         new Chart(document.getElementById('experienceChart'), {
             type: 'doughnut',
-            data: { labels: experienceLabels, datasets: [{ data: experienceValues, backgroundColor: ['#1B2A4A','#0EA5E9','#22C55E','#F59E0B'], borderColor: '#1E293B', borderWidth: 2 }] },
+            data: { labels: experienceLabels, datasets: [{ data: experienceValues, backgroundColor: ['#4A1B2A','#0EA5E9','#22C55E','#F59E0B'], borderColor: '#1E293B', borderWidth: 2 }] },
             options: {
                 cutout: '60%',
                 plugins: { legend: { position: 'bottom', labels: { color: tickColor, font: { size: 11 } } } }

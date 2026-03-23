@@ -1,5 +1,6 @@
 #Eksport do Excela
 import openpyxl
+import os
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.styles import PatternFill, Font, Alignment,Border, Side
@@ -15,6 +16,7 @@ def write_section (ws,title,data,title2):
     
 
 def export_to_excel(df, results, filepath):
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     wb = Workbook()
     ws = wb.active
     # Podsumowanie

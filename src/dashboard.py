@@ -1,7 +1,9 @@
 import json
+import os
 from pathlib import Path
 
 def export_to_html(results, filepath):
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     cities_labels = json.dumps(list(results['top_cities'].index))
     categories_labels = json.dumps(list(results['top_categories'].index))
     salary_labels = json.dumps(list(results['avg_salary_per_categories'].index))  # zmiana: per category
@@ -99,7 +101,7 @@ def export_to_html(results, filepath):
 
         new Chart(document.getElementById('experienceChart'), {{
             type: 'doughnut',
-            data: {{ labels: experienceLabels, datasets: [{{ data: experienceValues, backgroundColor: ['#1B2A4A','#0EA5E9','#22C55E','#F59E0B'], borderColor: '#1E293B', borderWidth: 2 }}] }},
+            data: {{ labels: experienceLabels, datasets: [{{ data: experienceValues, backgroundColor: ['#4A1B2A','#0EA5E9','#22C55E','#F59E0B'], borderColor: '#1E293B', borderWidth: 2 }}] }},
             options: {{
                 cutout: '60%',
                 plugins: {{ legend: {{ position: 'bottom', labels: {{ color: tickColor, font: {{ size: 11 }} }} }} }}

@@ -16,7 +16,7 @@ def get_offers(from_value):
     data = r.json()
     # 200 - ok, 429 - za dużo zapytań, 500 - błąd serwera
     if r.status_code != 200:
-        print(f'Error - status code {r.status_code}')
+        print(f'Status code {r.status_code}')
         return None
     return data
 
